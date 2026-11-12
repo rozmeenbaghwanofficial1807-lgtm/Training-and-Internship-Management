@@ -1,0 +1,7 @@
+{% extends 'base.html' %}{% block title %}Home | TrainTrack{% endblock %}
+{% block content %}
+<section class="hero p-5 rounded-4 mb-5"><span class="badge text-bg-light mb-3">Student • Company • Admin</span><h1 class="display-5 fw-bold">Find the right internship.<br>Build your future.</h1><p class="lead">A simple platform to connect students with training and internship opportunities.</p><a class="btn btn-primary btn-lg me-2" href="{{ url_for('auth.register') }}">Get started</a><a class="btn btn-outline-light btn-lg" href="{{ url_for('auth.login') }}">Sign in</a></section>
+<h2 class="mb-3">Latest approved internships</h2><div class="row g-3">
+{% for item in internships %}<div class="col-md-4"><div class="card h-100 shadow-sm"><div class="card-body"><span class="badge text-bg-primary">{{ item.domain }}</span><h5 class="mt-2">{{ item.title }}</h5><p class="text-secondary">{{ item.company.company_name }} · {{ item.location or 'Location not specified' }}</p><p>{{ item.description[:130] }}{% if item.description|length > 130 %}…{% endif %}</p></div></div></div>
+{% else %}<p class="text-secondary">No internships have been published yet.</p>{% endfor %}</div>
+{% endblock %}
