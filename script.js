@@ -1,0 +1,1 @@
+// Add optional client-side enhancements here. Bootstrap handles the navigation menu and alerts.
